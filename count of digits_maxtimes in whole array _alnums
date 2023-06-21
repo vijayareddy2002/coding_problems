@@ -1,0 +1,40 @@
+package vijaya1;
+import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
+public class vijaya2 {
+
+	public static void main(String[] args) {
+		int[] z;
+		z=new int[10];
+		for(int i=0;i<=9;i++) {
+			z[i]=0;
+		}
+		int[] arr= {1222,666,1230,6789};
+		for(int z1 :arr) {
+			String s=String.valueOf(z1);
+			for(int j=0;j<s.length();j++) {
+				int sd=Character.getNumericValue(s.charAt(j));
+				z[sd]=z[sd]+1;
+			}
+		}
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		for(int z2:z) {
+			//System.out.println(z2); 
+	      list.add(z2);
+		}
+    
+		int maxval=Collections.max(list,null);
+		int index=list.indexOf(maxval);
+		for(int k=0;k<9;k++) {
+			if(z[k]==maxval && k!=index &&  k>index) {
+				maxval=z[k];
+				index=k;
+			}
+		}
+		System.out.println(index);
+	}
+
+}
