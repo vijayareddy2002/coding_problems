@@ -1,0 +1,49 @@
+package vijaya1;
+import java.util.*;
+import java.lang.*;
+public class first {
+   public static void main(String args[]) {
+	   String input1=new String("world wide web");
+	   //creating hashmap
+	   HashMap<Character,Integer> chg=new HashMap<Character,Integer>();
+	   for(char c='a';c<='z';c++) {
+		   int numd=c-'a'+1;
+		   chg.put(c, numd);
+	   }
+	   int j,k;
+	   String[] str2=input1.split(" ");
+	   //List<String> al=new ArrayList<String>();
+	   // al=as.ArrayList(str2);
+	   int[] res=new int[3];
+	   int y=0;
+	    for(String z:str2) {
+	    	int sum=0;
+	    	for(j=0,k=z.length()-1; j<=k && j<z.length()/2 ;j++,k--) {
+	    		//System.out.println(z.charAt(j));
+	    		//System.out.println(chg.get(z.charAt(j)));
+	    		//System.out.println(z.charAt(k));
+	    		//System.out.println(chg.get(z.charAt(k)));
+	    		if(j==k) {
+	    			break;
+	    		}
+	    		sum=sum+(chg.get(z.charAt(j))-chg.get(z.charAt(k)));
+	    		//System.out.println(sum);
+	    	}
+	    	if(z.length()%2!=0) {
+	    	 sum=sum+chg.get(z.charAt(j));
+	    	
+	    }
+	    	res[y]=sum;
+	    	//System.out.println(sum);
+	    	y=y+1;
+	    }
+	    StringBuilder sd=new StringBuilder();
+   for(int yt: res) {
+	   System.out.println(yt);
+	   sd.append(yt);
+   }
+  int numsr=Integer.parseInt(sd.toString());
+  System.out.println(numsr);
+   //System.out.println(5/2);
+}
+}
