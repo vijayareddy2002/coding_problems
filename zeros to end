@@ -1,0 +1,25 @@
+Description
+
+Write a program to move all zeroes to the end of a given integer.
+Sample Input
+
+2
+
+1010101
+
+1000111
+
+Sample Output
+
+1111000
+
+1111000
+
+T=int(input())
+for j in range(T):
+  sd=int(input())
+  tf=list(str(sd))
+  u=sorted(tf)
+  rf="".join(u)
+  tf=rf[::-1]
+  print(tf)
