@@ -1,0 +1,46 @@
+Sample Input 0
+
+1abc23
+
+
+
+Sample Output 0
+
+24
+
+
+
+Explanation
+
+Here the numbers are 23 and 1 and so its sum is 24 that will get printed.
+
+
+def getnumber(ii,jj,T):
+  reversed=0
+  for k in range(ii,jj):
+          remainder = int(T[k])%10;
+          reversed = reversed * 10 + remainder
+  return reversed
+T=input()
+sum1=0
+i=0
+while(i<len(T)):
+  if T[i].isdigit():
+      c=1
+      j=i+1
+      while(j<len(T)):
+        if T[j].isdigit():
+            c=c+1
+        else:
+          break
+        j=j+1
+      rf=getnumber(i,j,T)
+      i=j
+      sum1=sum1+rf
+  else:
+    i=i+1
+print(sum1)      
+
+
+  
+
