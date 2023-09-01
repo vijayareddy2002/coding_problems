@@ -1,0 +1,27 @@
+//You are given an array a[ ] of n integers. The task is to find the smallest positive number missing from the array.
+
+import math
+T=int(input())
+l=list(map(int,input().split(" ")))
+tmax=max(l)
+c=0
+s=0
+flag=0
+for i in range(1,tmax+1):
+  if i in l:
+    continue
+  if i not in l:
+    print(i)
+    flag=1
+    break
+if flag==0:
+  print(tmax+1)
+
+Input (stdin)
+6
+4 2 0 -1 1 -3
+
+
+Output (stdout)
+3
+    
