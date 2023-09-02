@@ -41,6 +41,39 @@ void display(struct tnode* root){
         display(root->right);
     }
 }
+struct tnode* findmin(struct tnode* r){
+    while(r->left!=NULL)
+         r=r->left;
+    return r->left;
+}
+struct tnode* deletion(struct tnode* root,int key){
+    if (root==NULL)
+         return NULL;
+    if (key>root->data){
+        root->right=deletion(root->right,key);
+        return root;
+    }
+    else if(key<root->data){
+      root->left=deletion(root->left,key);
+      return root;
+    }
+    if(root->left==NULL){
+        struct tnode* temp=root->right;
+        free(root);
+        return temp;
+    }
+    else if(root->right==NULL){
+        struct tnode* temp=root->left;
+        free(root);
+        return temp;
+    }
+    else{
+        //both not null then find min element from right of root and replace it with that element;
+        struct tnode* temp2=findmin(root->right);
+        root->data=temp2->data; // minimum unna value data ni copy chesi malli root->right lo unna data  multiples rakudadu kabatii delete chestam.
+        return deletion(root->right,temp2->data);
+    }
+}
 int main(){
     struct tnode* root=NULL;
     int arr[8]={1,6,7,9,10,2,3,4};
@@ -52,11 +85,34 @@ int main(){
         printf("\nsearched :%d",res->data);
     else
      printf("\nnot found");
+     
+     struct tnode* res2=deletion(root,1);
+     display(res2);
 }
-Time complexity:
-insertion:
-deletion:
-searching:
-traversals:
 
-space complexity:
+Time complexity:
+insertion:Time complexity analysis
+At each step of recursion or iteration, we are performing O(1) operation and moving one level downward in the tree (till we reach the NULL link). So total number of comparison is equal to the height of BST. Time complexity of insert operation = The height of BST * O(1) = h * O(1) = O(h). 
+
+When BST is balanced, both left and right subtree will be of same size (n/2) and height of BST will be O(logn). So time complexity of insertion in a balanced BST = O(logn).
+
+When BST is completely unbalanced, it will be a linear chain of nodes (one node at each level) and the height of such BST is O(n). So time complexity of insertion in a unbalanced BST = O(n).
+
+traversal:all the tree traversal algorithms take \mathbf{\mathcal{O}(N)}} time.
+preorder,inorder,postorder
+searching:o(n) n=no of nodes
+Que-1. What is the worst-case time complexity for search, insert and delete operations in a general Binary Search Tree? 
+
+(A) O(n) for all 
+(B) O(Logn) for all 
+(C) O(Logn) for search and insert, and O(n) for delete 
+(D) O(Logn) for search, and O(n) for insert and delete 
+Solution: As discussed, all operations in BST have the worst-case time complexity of O(n). So, the correct option is (A). 
+
+Que-2. What are the worst-case time complexities of searching in a binary tree, BST, and AVL tree respectively? 
+
+(A) O(n) for all
+(B) O(Logn) for all 
+(C) O(n) for binary tree, and O(Logn) for others 
+(D) O(n) for binary tree and BST, and O(Logn) for AVL 
+Solution: As discussed, search operation in binary tree and BST have worst-case time complexity of O(n). However, the AVL tree has the worst-case time complexity of O(log n). So, the correct option is (D).
