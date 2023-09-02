@@ -1,0 +1,19 @@
+Jaffer wanted to excel in Math. He was learning about the Kaprekar number from Meena, his Maths teacher. She gave him a few random numbers and asked him to find out whether they are Kaprekar number or not.
+
+(Consider an n-digit number k. Square it and add the right n digits to the left n or n-1 digits. If the resultant sum is k, then k is called a Kaprekar number. For example, 9 is a Kaprekar number since 9^2 = 81 & 8 + 1 = 9, similarly, 297 is a Kaprekar number as 297^2 = 88209 & 88 + 209 = 297 ).
+
+Can you help Jaffer to write a program to find whether the given number is a Kaprekar number or not?
+
+rf=int(input())
+rg=rf**2
+fg=str(rg)
+fg1=fg[::-1]
+yh=fg1[:len(str(rf))]
+yh2=int(str(fg)[:len(str(rf))])
+yh3=int(yh[::-1])
+uf=yh3+yh2
+if uf==rf:
+  print("Kaprekar Number")
+else:
+  print("Not a Kaprekar Number")
+ 
