@@ -1,0 +1,62 @@
+// binary search tree
+#include<stdio.h>
+#include<stdlib.h>
+struct tnode{
+    int data;
+    struct tnode* left;
+    struct tnode* right;
+};
+struct tnode* newnode(int data1){
+    struct tnode* temp=(struct tnode*)malloc(sizeof(struct tnode));
+    temp->data=data1;
+    temp->left=temp->right=NULL;
+    return temp;
+}
+struct tnode* insertkey(struct tnode* root,int key){
+    if(root==NULL)
+     return newnode(key);
+     if(key<root->data)
+         root->left=insertkey(root->left,key);
+     else if(key>root->data)
+      root->right=insertkey(root->right,key);
+     return root;
+}
+struct tnode* search(struct tnode* root ,int key){
+    if (root==NULL)
+        return NULL;
+    if(root->data==key)
+        return root;
+    else if(key>root->data)
+       return search(root->right,key);
+    else if(key<root->data)
+        return search(root->left,key);
+}
+void display(struct tnode* root){
+    if(root){
+        //preorder--->root,left,right;
+        //postoredr---> left,right,root;
+        //inorder-->left,root,right;
+        display(root->left);
+        printf("%d\n",root->data);
+        display(root->right);
+    }
+}
+int main(){
+    struct tnode* root=NULL;
+    int arr[8]={1,6,7,9,10,2,3,4};
+    for(int i=0;i<8;i++)
+       root=insertkey(root,arr[i]);
+    display(root);
+    struct tnode* res=search(root,11);
+    if(res!=NULL)
+        printf("\nsearched :%d",res->data);
+    else
+     printf("\nnot found");
+}
+Time complexity:
+insertion:
+deletion:
+searching:
+traversals:
+
+space complexity:
