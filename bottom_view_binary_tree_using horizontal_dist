@@ -1,0 +1,42 @@
+#bottom VIEW OF BINARY  TREE
+class newNode:
+    def __init__(self,key): #for creating node data petali
+        self.data=key
+        self.left=None #in place of null we use None
+        self.right=None 
+        self.horizontal_dist=0
+def bottomviewofbinary(root):
+    if root==None:
+        return 
+    m=dict()
+    que=[]
+    max_dist,min_dist=0,0  # top view lo just paiki kanipinchevi chalu elements but here root ki zero undi and inka bottom lo zero ochindi anuko horizontal distance then manam update cheyali so we use max_dist and min_dist
+    hd1=0
+    root.horizontal_dist=hd1
+    que.append(root)
+    while(len(que)>=1):
+        cur=que.pop(0)
+        rd=cur.horizontal_dist
+        max_dist=max(max_dist,rd)
+        min_dist=min(min_dist,rd)
+        #if rd not in m:
+        m[rd]=cur.data
+        if cur.left:
+            cur.left.horizontal_dist=rd-1
+            que.append(cur.left)
+        if cur.right:
+            cur.right.horizontal_dist=rd+1
+            que.append(cur.right)
+    for j in range(min_dist,max_dist+1):
+        print(m[j],end=" ")
+root = newNode(1)
+root.left = newNode(2)
+root.right = newNode(3)
+root.left.right = newNode(4)
+root.left.right.right = newNode(5)
+root.left.right.right.right = newNode(6)
+print("The bottom view of the tree is: ")
+bottomviewofbinary(root)
+        
+        Time Complexity: O(N * logN)
+Auxiliary Space: O(N)
