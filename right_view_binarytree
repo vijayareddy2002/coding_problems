@@ -1,0 +1,33 @@
+#right view  node OF BINARY  TREE
+class newNode:
+    def __init__(self,key): #for creating node data petali
+        self.data=key
+        self.left=None #in place of null we use None
+        self.right=None 
+def rightviewofbinary(root):
+    if root==None:
+        return 
+    que=[]
+    que.append(root)
+    while que:# que lo elements petaka right most element kavali manaki so size==0 ainapud print chesukuntunam
+      n=len(que)
+      while(n>0):
+          n=n-1
+          cur=que.pop(0)
+          if n==0:
+            print(cur.data)
+          if cur.left:
+            que.append(cur.left)
+          if cur.right:
+            que.append(cur.right)
+root = newNode(1)
+root.left = newNode(2)
+root.right = newNode(3)
+root.left.right = newNode(4)
+root.left.right.right = newNode(5)
+root.left.right.right.right = newNode(6)
+rightviewofbinary(root)
+print("The diameter  of the binary  tree is:")
+
+        
+        
