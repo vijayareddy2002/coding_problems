@@ -1,0 +1,37 @@
+#second largest data node OF BINARY  TREE
+class newNode:
+    def __init__(self,key): #for creating node data petali
+        self.data=key
+        self.left=None #in place of null we use None
+        self.right=None 
+def diameterofbinary(root):
+    smax=0
+    max1=0
+    if root==None:
+        return 0
+    que=[]
+    que.append(root)
+    while(len(que)):
+        cur=que.pop(0)
+        if cur!=None:
+            if cur.data>max1:
+                smax=max1
+                max1=cur.data 
+            elif(cur.data>smax and cur.data!=max1):
+                smax=root.data
+        if cur.left:
+            que.append(cur.left)
+        if cur.right:
+            que.append(cur.right)
+    return smax
+root = newNode(1)
+root.left = newNode(2)
+root.right = newNode(3)
+root.left.right = newNode(4)
+root.left.right.right = newNode(5)
+root.left.right.right.right = newNode(6)
+z=diameterofbinary(root)
+print("The diameter  of the binary  tree is: ",z)
+
+        
+        
