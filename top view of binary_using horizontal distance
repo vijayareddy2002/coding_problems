@@ -1,0 +1,38 @@
+#TOP VIEW OF BINARY  TREE
+class newNode:
+    def __init__(self,key): #for creating node data petali
+        self.data=key
+        self.left=None #in place of null we use None
+        self.right=None 
+        self.horizontal_dist=0
+def topviewofbinary(root):
+    if root==None:
+        return 
+    m=dict()
+    que=[]
+    hd1=0
+    root.horizontal_dist=hd1
+    que.append(root)
+    while(len(que)>=1):
+        cur=que.pop(0)
+        rd=cur.horizontal_dist
+        if rd not in m:
+            m[rd]=cur.data
+        if cur.left:
+            cur.left.horizontal_dist=rd-1
+            que.append(cur.left)
+        if cur.right:
+            cur.right.horizontal_dist=rd+1
+            que.append(cur.right)
+    for j in sorted(m):
+        print(m[j],end=" ")
+root = newNode(1)
+root.left = newNode(2)
+root.right = newNode(3)
+root.left.right = newNode(4)
+root.left.right.right = newNode(5)
+root.left.right.right.right = newNode(6)
+print("The top view of the tree is: ")
+topviewofbinary(root)
+        
+        Time complexity: O(N * log(N)), where N is the number of nodes in the given tree.
