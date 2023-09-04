@@ -1,0 +1,12 @@
+# MAKING MINIMUM NO OF MOVES TO EQUALIZE ALL ELEMENTS IN A ARRAYS
+l=[1,10,2,9]
+#can be done using median of a ARRAYS 
+t=sorted(l)
+print(t)
+min1 = (t[(len(t)//2)-1]+t[len(t)//2])//2 if len(t)%2==0 else t[len(t)//2]
+print(min1)
+sum1=0 
+for i in range(len(l)):
+    sum1=sum1+(abs(l[i]-min1))
+print("minimum num of moves to make all elements in array")
+print(sum1)
