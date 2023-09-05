@@ -1,19 +1,13 @@
-/******************************************************************************
-
-                            Online Java Compiler.
-                Code, Compile, Run and Debug java program online.
-Write your code in this editor and press "Run" button to execute it.
-
-*******************************************************************************/
-
 import java.util.*;
-public class Main
-{  static int kthLargest(ArrayList < Integer > arr, int size, int K) {
-  PriorityQueue < Integer > pq = new PriorityQueue < Integer > (Collections.reverseOrder());
-  for (int i = 0; i < size; i++) {
-    pq.add(arr.get(i));
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+   PriorityQueue<Integer> pq
+            = new PriorityQueue<Integer>(
+                Collections.reverseOrder());
+        for (int i = 0; i < nums.length; i++) {
+    pq.add(nums[i]);
   }
-  int l = K - 1;
+        int l = k - 1;
   while (l > 0) {
     pq.poll();
     l = l - 1;
@@ -21,18 +15,4 @@ public class Main
  
   return pq.peek();
 }
-	public static void main(String[] args) {
-	    Scanner in =new Scanner(System.in);
-	    ArrayList<Integer> arr1=new ArrayList<>();
-	    for(int i=0;i<5;i++){
-	        System.out.println("enter array element");
-	        int z=in.nextInt();
-	        arr1.add(z);
-	    }
-	    System.out.println("enter k value :");
-	int k=in.nextInt();
-	int df=kthLargest(arr1,5,k);
-	System.out.println("the largest number is :");
-	System.out.println(df);
-	}
-}
+    }
