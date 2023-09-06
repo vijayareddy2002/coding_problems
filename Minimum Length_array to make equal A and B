@@ -1,0 +1,16 @@
+T=int(input())
+for i in range(T):
+    k=int(input())
+    A=list(map(int,input().split()))
+    B=list(map(int,input().split()))
+    l1,l2=0,0
+    for j in range(len(A)):
+        if A[j]!=B[j]:
+            l1=j
+            break
+    for p in range(len(A)-1,0,-1):
+        if A[p]!=B[p]:
+            l2=p
+            break
+    print(l2-l1+1)
+        
