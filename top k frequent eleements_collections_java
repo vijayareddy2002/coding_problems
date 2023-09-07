@@ -1,0 +1,27 @@
+import java.util.*;
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        Map<Integer,Integer> tr=new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            if(tr.containsKey(nums[i])){
+                tr.put(nums[i],tr.get(nums[i])+1);
+            }
+            else{
+                tr.put(nums[i],1);
+            }
+        }
+        //create a priority QUeue
+        // create a priority queue with the new comparator method
+        //This means that the priority queue will order the elements based on their frequencies in decreasing order.
+PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.comparingInt(tr::get).reversed());
+        for(int i:tr.keySet()){
+            heap.add(i);
+        }
+        int[] res=new int[k];
+        for(int j=0;j<k;j++){
+            res[j]=heap.poll();
+        }
+        return res;
+    }
+}
+   
