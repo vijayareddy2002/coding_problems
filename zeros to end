@@ -23,3 +23,7 @@ for j in range(T):
   rf="".join(u)
   tf=rf[::-1]
   print(tf)
+# we can also follow one other approach just
+use one for loop for counting 1s and 0s then
+in other array copy 1s first and then 0s then it can be solved using o(n)
+
