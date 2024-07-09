@@ -7,3 +7,13 @@ while num!=1:
      return False
   num=num//4
 return True
+
+
+in generalised format y is a power of x means :
+if y<0:
+   return False
+while y!=1:
+  if y%x!=0:
+     return False
+  y=y//x
+return True
