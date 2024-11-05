@@ -1,0 +1,27 @@
+Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+
+Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
+
+https://leetcode.com/problems/reverse-integer/
+
+class Solution:
+    def reverse(self, x: int) -> int:
+        x1=str(x)
+        global x2
+        if '-' == x1[0]:
+            x2=x1[1:][::-1]
+            x2=(-1)*int(x2)
+        else:
+            x2=int(x1[::-1])
+        if x2>=(2**31)-1 or x2<=-(2**31) :
+            return 0
+        else:
+            return x2
+
+
+The time complexity of the given solution is O(n), where n is the number of digits in the integer x. This is because the algorithm involves converting the integer to a string, reversing the string, and then converting it back to an integer. The string operations (conversion and reversal) take linear time relative to the number of digits.
+
+The space complexity is also O(n) due to the storage of the string representation of the integer. The reversed string is stored in a separate variable, which requires additional space proportional to the number of digits in x. 
+
+Overall, both time and space complexities are linear with respect to the number of digits in the input integer.
+        
