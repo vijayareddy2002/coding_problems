@@ -1,0 +1,65 @@
+# Python3 program to Merge Two Sorted Halves Of
+# Array Into Single Sorted Array
+
+# Merge two sorted halves of Array into single
+# sorted array
+def mergeTwoHalf(A, n):
+    
+    # Starting index of second half
+    half_i = 0    
+
+    # Temp Array store sorted resultant array
+    temp = [0 for i in range(n)]
+
+    # First Find the point where array is 
+    # divide into two half
+    for i in range(n - 1):
+        if (A[i] > A[i + 1]):
+            half_i = i + 1
+            break
+
+    # If Given array is all-ready sorted
+    if (half_i == 0):
+        return
+
+    # Merge two sorted arrays in single
+    # sorted array
+    i = 0
+    j = half_i
+    k = 0
+    
+    while (i < half_i and j < n):
+        if (A[i] < A[j]):
+            temp[k] = A[i]
+            k += 1
+            i += 1
+        else:
+            temp[k] = A[j]
+            k += 1
+            j += 1
+    
+    # Copy the remaining elements of A[i to half_! ]
+    while i < half_i:
+        temp[k] = A[i]
+        k += 1
+        i += 1
+
+    # Copy the remaining elements of A[ half_! to n ]
+    while (j < n):
+        temp[k] = A[j]
+        k += 1
+        j += 1
+
+    for i in range(n):
+        A[i] = temp[i]
+
+# Driver code
+A = [ 2, 3, 8, -1, 7, 10 ]
+n = len(A)
+
+mergeTwoHalf(A, n)
+
+# Print sorted Array
+print(*A, sep = ' ')
+
+# This code is contributed by avanitrachhadiya2155
